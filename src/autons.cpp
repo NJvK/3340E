@@ -190,9 +190,9 @@ void LEFT_RED_AUTON(){
   wait(400, msec);
   
   HaltRollers();
-  wait(200, msec);
+  // wait(200, msec);
 
-  chassis.turn_to_angle(327);
+  chassis.turn_to_angle(326);
   wait(700, msec);
 
   chassis.drive_max_voltage = 2;
@@ -211,13 +211,12 @@ void LEFT_RED_AUTON(){
   wait(700, msec);
 
   StopRollers();
-  wait(400, msec);
+  // wait(200, msec);
 
-  chassis.drive_distance(11);
+  chassis.drive_distance(12);
   wait(400, msec);
 
   chassis.turn_to_angle(40);
-  // wait(700, msec);
 
   ///// Score 3 blocks /////
   MiddleGoalRoller();
@@ -242,14 +241,14 @@ void RIGHT_RED_AUTON(){
   chassis.turn_to_angle(-90);
   wait(700, msec);
 
-  chassis.drive_distance(17);
+  chassis.drive_distance(18);
   wait(200, msec);
 
   LongGoalRoller();
   wait(1500, msec);
 
   StopRollers();
-  wait(200, msec);
+  // wait(200, msec);
 
 
   ///////// go get 2 blocks ///////////
@@ -257,7 +256,7 @@ void RIGHT_RED_AUTON(){
   wait(400, msec);
 
   HaltRollers();
-  wait(200, msec);  
+  // wait(200, msec);  
 
   chassis.turn_to_angle(225);
   wait(200, msec);
@@ -291,22 +290,14 @@ void RIGHT_RED_AUTON(){
   wait(200, msec);
 
   DroppAll();
-  wait(200,msec);
-
-
-
-
-
+  // wait(200,msec);
 }
-
 void LEFT_BLUE_AUTON(){
-  
-}
 
+}
 void RIGHT_BLUE_AUTON(){
- 
-}
 
+}
 void SKILLS_AUTON(){
 
 }
@@ -314,5 +305,3 @@ void SKILLS_AUTON(){
 void RANDOM_AUTON(){
 
 }
-
-  
