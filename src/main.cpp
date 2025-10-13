@@ -330,40 +330,35 @@ void usercontrol(void) {
     chassis.control_arcade();
 
     bool up = Controller1.ButtonUp.pressing();
-    bool color_sort_mode = (current_auton_selection == 0 || current_auton_selection == 2);
+    //bool color_sort_mode = (current_auton_selection == 0 || current_auton_selection == 2);
 
     // R2: -------- SCORE INTO LONG GOAL -----------------
     if (Controller1.ButtonR2.pressing()) {
-      LowerRoller.spin(forward, 100, percent); //UP
-      UpperRoller.spin(forward, 100, percent); //UP
-      MiddleRoller.spin(forward, 100, percent); //UP
-      IntakeRoller.spin(forward, 100, percent); //UP
+      IntakeRoller.spin(reverse, 100, percent);
+      LowerRoller.spin(reverse, 100, percent);
+      MiddleRoller.spin(forward, 100, percent);
+      UpperRoller.spin(forward, 100, percent);
     }
-
     // L1: --------- Intake ----------------------------
-    else if (Controller1.ButtonUp.pressing()) {
-      LowerRoller.spin(forward, 100, percent); //DOWN
-      UpperRoller.spin(reverse, 100, percent); //DOWN
-      MiddleRoller.spin(forward, 100, percent); //DOWN
-      IntakeRoller.spin(reverse, 100, percent); //DOWN
+    else if (Controller1.ButtonL1.pressing()) {
+      IntakeRoller.spin(reverse, 100, percent);
+      LowerRoller.spin(forward, 100, percent);
+      MiddleRoller.spin(forward, 100, percent);
     }
-
-    // R1 -------- SCORE INTO MIDDLE GOAL -------------
-    else if (Controller1.ButtonDown.pressing()) {
-      LowerRoller.spin(forward, 100, percent); //UP
-      UpperRoller.spin(reverse, 100, percent);//DOWN
-      IntakeRoller.spin(forward, 100, percent); // UP
-      MiddleRoller.spin(reverse, 100, percent); // DOWN
+    // R1 -------- SCORE INTO UPPER GOAL -------------
+    else if (Controller1.ButtonR1.pressing()) {
+      IntakeRoller.spin(reverse, 100, percent);
+      LowerRoller.spin(reverse, 100, percent);
+      MiddleRoller.spin(forward, 100, percent);
+      UpperRoller.spin(reverse, 100, percent);
     }
-
-    // L2 --------SCORE INTO UPPER GOAL------------
+    // L2 --------SCORE INTO LOWER GOAL------------
     else if (Controller1.ButtonL2.pressing()) {
-      LowerRoller.spin(reverse, 100, percent); //UP
-      UpperRoller.spin(reverse, 100, percent);//DOWN
-      IntakeRoller.spin(reverse, 100, percent); // DOWN
-      MiddleRoller.spin(reverse, 100, percent); //DOWN
+      IntakeRoller.spin(forward, 100, percent);
+      LowerRoller.spin(reverse, 100, percent);
+      MiddleRoller.spin(reverse, 100, percent);
+      UpperRoller.spin(reverse, 100, percent);
     }
-
     // PRESSING ANYTHING
     else {
       LowerRoller.stop();
@@ -387,8 +382,8 @@ void usercontrol(void) {
 
 
 int main() {
-  Competition.autonomous(autonomous);
-  Competition.drivercontrol(LEFT_RED_AUTON);
+  Competition.autonomous(RIGHT_RED_AUTON);
+  Competition.drivercontrol(usercontrol);
 
   pre_auton();
 
