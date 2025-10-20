@@ -236,13 +236,13 @@ void LEFT_RED_AUTON(){
 
   //////// score  1 block  ///////////  
   chassis.drive_distance(45);
-  wait(400, msec);
+  wait(200, msec);
 
   chassis.turn_to_angle(90);
-  wait(700, msec);
+  wait(100, msec);
 
   chassis.drive_distance(18);
-  wait(200, msec);
+  wait(100, msec);
 
   LongGoalRoller();
   wait(1500, msec);
@@ -253,23 +253,23 @@ void LEFT_RED_AUTON(){
 
   ///////// go get 2 blocks ///////////
   chassis.drive_distance(-14);
-  wait(400, msec);
+  wait(200, msec);
 
   HaltRollers();
   // wait(200, msec);  
 
   chassis.turn_to_angle(-225);
-  wait(200, msec);
+  wait(100, msec);
 
   chassis.drive_distance(21);
-  wait(200, msec);
+  wait(100, msec);
 
   chassis.drive_max_voltage = 2;
   chassis.turn_max_voltage = 2;
-  wait(200, msec);
+  wait(100, msec);
 
   chassis.drive_distance(6);
-  wait(200, msec);
+  wait(100, msec);
 
   chassis.drive_distance(-6);
   wait(200, msec);
@@ -289,7 +289,7 @@ void LEFT_RED_AUTON(){
   chassis.drive_distance(16);
   wait(200, msec);
 
-  DroppAll();
+  MiddleGoalRoller();
   // wait(200,msec);
 }
 
@@ -309,7 +309,7 @@ void RIGHT_RED_AUTON(){
   wait(400, msec);
 
   chassis.turn_to_angle(-90);
-  wait(700, msec);
+  wait(200, msec);
 
   chassis.drive_distance(18);
   wait(200, msec);
