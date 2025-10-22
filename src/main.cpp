@@ -320,8 +320,12 @@ void autonomous(void) {
       break;
 }
 }
-
-
+// este funciona y es el code para el solenoide
+bool FrameState = false;
+void toggleFrame(){
+  FrameState = !FrameState;
+  Frame.set(FrameState);
+}
 
 
 void usercontrol(void) {
@@ -330,6 +334,7 @@ void usercontrol(void) {
     chassis.control_arcade();
 
     bool up = Controller1.ButtonUp.pressing();
+    Controller1.ButtonUp.pressed(toggleFrame);
     //bool color_sort_mode = (current_auton_selection == 0 || current_auton_selection == 2);
 
     // R2: -------- SCORE INTO LONG GOAL -----------------
@@ -368,14 +373,15 @@ void usercontrol(void) {
     }
 
     // Toggle del solenoide
-    if (up && !FrameDOWN) {
-      if (!FrameUP) {
-        FrameUP = true;
-        Frame.set(FrameUP);
-      }
-    }
-    FrameDOWN = up;
-
+    // este no funciona
+    // if (up && !FrameDOWN) {
+    //   if (!FrameUP) {
+    //     FrameUP = true;
+    //     Frame.set(FrameUP);
+    //   }
+    // }
+    // FrameDOWN = up;
+    
     wait(20, msec);
   } 
 }

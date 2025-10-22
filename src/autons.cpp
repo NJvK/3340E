@@ -264,7 +264,7 @@ void LEFT_RED_AUTON(){
   chassis.drive_distance(21);
   wait(100, msec);
 
-  chassis.drive_max_voltage = 2;
+  chassis.drive_max_voltage = 3;
   chassis.turn_max_voltage = 2;
   wait(100, msec);
 
