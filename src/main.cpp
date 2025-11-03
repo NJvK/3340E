@@ -15,12 +15,12 @@ motor RB = motor(PORT9, ratio6_1, false);
 motor RC = motor(PORT4, ratio6_1, false);
 motor_group RM = motor_group(RA, RB, RC);
 
-motor_group Drivetrain = motor_group(LA, LB, LC, RA, RB, RC);
+// motor_group Drivetrain = motor_group(LA, LB, LC, RA, RB, RC);
 
 motor LowerRoller = motor(PORT7, ratio18_1, true);
 motor UpperRoller = motor(PORT10, ratio18_1, true);
 motor MiddleRoller = motor(PORT5, ratio18_1, true);
-motor IntakeRoller = motor(PORT19, ratio18_1, true);
+motor IntakeRoller = motor(PORT19, ratio18_1, false);
 
 optical EYE = optical(PORT21);
 
@@ -130,6 +130,8 @@ int current_auton_selection = 0;
 bool auto_started = false;
 bool FrameUP = false;
 bool FrameDOWN = false;
+bool WillUP = false;
+bool WillDOWN = false;
 
 // --- Optical SET UP ---
 const int EYE_MIN_BRIGHT = 30; // tune 20–40 on-field
@@ -333,20 +335,32 @@ void toggleFrame()
   FrameState = !FrameState;
   Frame.set(FrameState);
 }
+bool WillState = false;
+void toggleWill()
+{
+  WillState = !WillState;
+  Will.set(WillState);
+}
 
 void usercontrol(void)
 {
-  chassis.control_arcade();
-
   while (1)
   {
+    chassis.control_arcade();
     // Conducción
 
-    bool up = Controller1.ButtonUp.pressing();
-    if (Controller1.ButtonUp.pressing())
+    bool up = Controller1.ButtonY.pressing();
+    if (Controller1.ButtonY.pressing())
     {
       wait(20, msec);
       Controller1.ButtonUp.pressed(toggleFrame);
+      wait(20, msec);
+    }
+    bool down = Controller1.ButtonX.pressing();
+    if (Controller1.ButtonX.pressing())
+    {
+      wait(20, msec);
+      Controller1.ButtonUp.pressed(toggleWill);
       wait(20, msec);
     }
     // Controller1.ButtonUp.pressed(toggleFrame);
@@ -408,11 +422,13 @@ void usercontrol(void)
 
 int main()
 {
-  // Competition.autonomous(RIGHT_RED_AUTON);
+  Competition.autonomous(LEFT_RED_AUTON);
   Competition.drivercontrol(usercontrol);
 
-  // pre_auton();
+  pre_auton();
   // vexcodeInit();
+  vexcodeInit();
+  default_constants();
 
   while (true)
   {

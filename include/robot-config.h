@@ -2,6 +2,7 @@ using namespace vex;
 
 extern brain Brain;
 extern digital_out Frame;
+extern digital_out Will;
 
 
 //To set up a motor called LeftFront here, you'd use

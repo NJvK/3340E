@@ -178,119 +178,119 @@ void MiddleGoalRoller(){
 
 void LEFT_RED_AUTON(){
   // // ///////// SET UP ///////////
-  // default_constants();
-  // chassis.Gyro.calibrate();
-  // while (chassis.Gyro.isCalibrating())
-  // wait(200, msec);
-
-  // chassis.drive_max_voltage = 9;
-  // chassis.turn_max_voltage = 4;
-
-
-  // //////// Go to get 3 blocks  ///////////  
-  // chassis.drive_distance(28);
-  // wait(400, msec);
-  
-  // HaltRollers();
-  // // wait(200, msec);
-
-  // chassis.turn_to_angle(326);
-  // wait(700, msec);
-
-  // chassis.drive_max_voltage = 2;
-  // wait(400, msec);
-
-  // chassis.drive_distance(8);
-  // wait(400, msec);
-  
-  // chassis.turn_to_angle(330);
-  // wait(700, msec);
-
-  // chassis.drive_distance(8);
-  // wait(400, msec);
-
-  // chassis.turn_to_angle(51);
-  // wait(700, msec);
-
-  // StopRollers();
-  // // wait(200, msec);
-
-  // chassis.drive_distance(12);
-  // wait(400, msec);
-
-  // chassis.turn_to_angle(40);
-
-  // ///// Score 3 blocks /////
-  // MiddleGoalRoller();
-  // wait(1500, msec);
-  // --------------------------------------------------
-  ///////// SET UP ///////////
   default_constants();
   chassis.Gyro.calibrate();
   while (chassis.Gyro.isCalibrating())
   wait(200, msec);
 
   chassis.drive_max_voltage = 9;
-  chassis.turn_max_voltage = 7;
+  chassis.turn_max_voltage = 4;
 
 
-  //////// score  1 block  ///////////  
-  chassis.drive_distance(45);
-  wait(200, msec);
+  //////// Go to get 3 blocks  ///////////  
+  chassis.drive_distance(28);
+  wait(400, msec);
+  
+  HaltRollers();
+  // wait(200, msec);
 
-  chassis.turn_to_angle(90);
-  wait(100, msec);
+  chassis.turn_to_angle(326);
+  wait(700, msec);
 
-  chassis.drive_distance(18);
-  wait(100, msec);
+  chassis.drive_max_voltage = 2;
+  wait(400, msec);
 
-  LongGoalRoller();
-  wait(1500, msec);
+  chassis.drive_distance(8);
+  wait(400, msec);
+  
+  chassis.turn_to_angle(330);
+  wait(700, msec);
+
+  chassis.drive_distance(8);
+  wait(400, msec);
+
+  chassis.turn_to_angle(51);
+  wait(700, msec);
 
   StopRollers();
   // wait(200, msec);
 
-
-  ///////// go get 2 blocks ///////////
-  chassis.drive_distance(-14);
-  wait(200, msec);
-
-  HaltRollers();
-  // wait(200, msec);  
-
-  chassis.turn_to_angle(-225);
-  wait(100, msec);
-
-  chassis.drive_distance(21);
-  wait(100, msec);
-
-  chassis.drive_max_voltage = 3;
-  chassis.turn_max_voltage = 2;
-  wait(100, msec);
-
-  chassis.drive_distance(6);
-  wait(100, msec);
-
-  chassis.drive_distance(-6);
-  wait(200, msec);
-
-  chassis.turn_to_angle(-220);
-  wait(200, msec);
-
-  
   chassis.drive_distance(12);
-  wait(200, msec);
+  wait(400, msec);
 
-  ///// Score 2 blocks /////
-  chassis.turn_to_angle(-224);
-  wait(200, msec);
+  chassis.turn_to_angle(40);
+
+  ///// Score 3 blocks /////
+  MiddleGoalRoller();
+  wait(1500, msec);
+  // --------------------------------------------------
+  ///////// SET UP ///////////
+  // default_constants();
+  // chassis.Gyro.calibrate();
+  // while (chassis.Gyro.isCalibrating())
+  // wait(200, msec);
+
+  // chassis.drive_max_voltage = 9;
+  // chassis.turn_max_voltage = 7;
+
+
+  // //////// score  1 block  ///////////  
+  // chassis.drive_distance(45);
+  // wait(200, msec);
+
+  // chassis.turn_to_angle(90);
+  // wait(100, msec);
+
+  // chassis.drive_distance(18);
+  // wait(100, msec);
+
+  // LongGoalRoller();
+  // wait(1500, msec);
+
+  // StopRollers();
+  // // wait(200, msec);
+
+
+  // ///////// go get 2 blocks ///////////
+  // chassis.drive_distance(-14);
+  // wait(200, msec);
+
+  // HaltRollers();
+  // // wait(200, msec);  
+
+  // chassis.turn_to_angle(-225);
+  // wait(100, msec);
+
+  // chassis.drive_distance(21);
+  // wait(100, msec);
+
+  // chassis.drive_max_voltage = 3;
+  // chassis.turn_max_voltage = 2;
+  // wait(100, msec);
+
+  // chassis.drive_distance(6);
+  // wait(100, msec);
+
+  // chassis.drive_distance(-6);
+  // wait(200, msec);
+
+  // chassis.turn_to_angle(-220);
+  // wait(200, msec);
 
   
-  chassis.drive_distance(16);
-  wait(200, msec);
+  // chassis.drive_distance(12);
+  // wait(200, msec);
 
-  MiddleGoalRoller();
-  // wait(200,msec);
+  // ///// Score 2 blocks /////
+  // chassis.turn_to_angle(-224);
+  // wait(200, msec);
+
+  
+  // chassis.drive_distance(16);
+  // wait(200, msec);
+
+  // MiddleGoalRoller();
+  // // wait(200,msec);
 }
 
 void RIGHT_RED_AUTON(){
