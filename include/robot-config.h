@@ -3,6 +3,7 @@ using namespace vex;
 extern brain Brain;
 extern digital_out Frame;
 extern digital_out Will;
+extern digital_out Middle;
 
 
 //To set up a motor called LeftFront here, you'd use
@@ -18,10 +19,12 @@ extern motor RA;
 extern motor RB;
 extern motor_group RM;
 
-extern motor LowerRoller;
-extern motor UpperRoller;
-extern motor MiddleRoller;
-extern motor IntakeRoller;
+// extern motor LowerRoller;
+// extern motor UpperRoller;
+// extern motor MiddleRoller;
+// extern motor IntakeRoller;
+extern motor Intake;
+extern motor Scoring;
 
 extern controller Controller1;
 

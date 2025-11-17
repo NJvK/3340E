@@ -5,22 +5,26 @@ using namespace vex;
 competition Competition;
 controller Controller1 = controller(primary);
 
-motor LA = motor(PORT1, ratio6_1, true);
+motor LA = motor(PORT11, ratio6_1, true);
 motor LB = motor(PORT2, ratio6_1, true);
-motor LC = motor(PORT3, ratio6_1, true);
+motor LC = motor(PORT5, ratio6_1, true);
 motor_group LM = motor_group(LA, LB, LC);
 
-motor RA = motor(PORT6, ratio6_1, false);
+motor RA = motor(PORT20, ratio6_1, false);
 motor RB = motor(PORT9, ratio6_1, false);
-motor RC = motor(PORT4, ratio6_1, false);
+motor RC = motor(PORT10, ratio6_1, false);
 motor_group RM = motor_group(RA, RB, RC);
 
 // motor_group Drivetrain = motor_group(LA, LB, LC, RA, RB, RC);
+// old basket bot
+// motor LowerRoller = motor(PORT7, ratio18_1, true);
+// motor UpperRoller = motor(PORT10, ratio18_1, true);
+// motor MiddleRoller = motor(PORT5, ratio18_1, true);
+// motor IntakeRoller = motor(PORT19, ratio18_1, false);
 
-motor LowerRoller = motor(PORT7, ratio18_1, true);
-motor UpperRoller = motor(PORT10, ratio18_1, true);
-motor MiddleRoller = motor(PORT5, ratio18_1, true);
-motor IntakeRoller = motor(PORT19, ratio18_1, false);
+// new china bot
+motor Intake = motor(PORT18, ratio6_1, false);
+motor Scoring = motor(PORT1, ratio6_1, true);
 
 optical EYE = optical(PORT21);
 
@@ -132,6 +136,8 @@ bool FrameUP = false;
 bool FrameDOWN = false;
 bool WillUP = false;
 bool WillDOWN = false;
+bool MiddleUP = false;
+bool MiddleDOWN = false;
 
 // --- Optical SET UP ---
 const int EYE_MIN_BRIGHT = 30; // tune 20–40 on-field
@@ -341,6 +347,12 @@ void toggleWill()
   WillState = !WillState;
   Will.set(WillState);
 }
+bool MiddleState = false;
+void toggleMiddle()
+{
+  MiddleState = !MiddleState;
+  Middle.set(MiddleState);
+}
 
 void usercontrol(void)
 {
@@ -353,14 +365,21 @@ void usercontrol(void)
     if (Controller1.ButtonY.pressing())
     {
       wait(20, msec);
-      Controller1.ButtonUp.pressed(toggleFrame);
+      Controller1.ButtonY.pressed(toggleFrame);
       wait(20, msec);
     }
     bool down = Controller1.ButtonX.pressing();
     if (Controller1.ButtonX.pressing())
     {
       wait(20, msec);
-      Controller1.ButtonUp.pressed(toggleWill);
+      Controller1.ButtonX.pressed(toggleWill);
+      wait(20, msec);
+    }
+    bool middle = Controller1.ButtonA.pressing();
+    if (Controller1.ButtonA.pressing())
+    {
+      wait(20, msec);
+      Controller1.ButtonA.pressed(toggleMiddle);
       wait(20, msec);
     }
     // Controller1.ButtonUp.pressed(toggleFrame);
@@ -369,41 +388,32 @@ void usercontrol(void)
     // R2: -------- SCORE INTO LONG GOAL -----------------
     if (Controller1.ButtonR2.pressing())
     {
-      IntakeRoller.spin(reverse, 100, percent);
-      LowerRoller.spin(reverse, 100, percent);
-      MiddleRoller.spin(forward, 100, percent);
-      UpperRoller.spin(forward, 100, percent);
+      Intake.spin(forward, 100, percent);
+      Scoring.spin(forward, 100, percent);
     }
     // L1: --------- Intake ----------------------------
     else if (Controller1.ButtonL1.pressing())
     {
-      IntakeRoller.spin(reverse, 100, percent);
-      LowerRoller.spin(forward, 100, percent);
-      MiddleRoller.spin(forward, 100, percent);
+      Intake.spin(forward, 100, percent);
+      Scoring.spin(forward, 100, percent);
     }
     // R1 -------- SCORE INTO UPPER GOAL -------------
     else if (Controller1.ButtonR1.pressing())
     {
-      IntakeRoller.spin(reverse, 100, percent);
-      LowerRoller.spin(reverse, 100, percent);
-      MiddleRoller.spin(forward, 100, percent);
-      UpperRoller.spin(reverse, 100, percent);
+      Intake.spin(forward, 100, percent);
+      Scoring.spin(reverse, 100, percent);
     }
     // L2 --------SCORE INTO LOWER GOAL------------
     else if (Controller1.ButtonL2.pressing())
     {
-      IntakeRoller.spin(forward, 100, percent);
-      LowerRoller.spin(reverse, 100, percent);
-      MiddleRoller.spin(reverse, 100, percent);
-      UpperRoller.spin(reverse, 100, percent);
+      Intake.spin(forward, 100, percent);
+      Scoring.spin(forward, 100, percent);
     }
     // PRESSING ANYTHING
     else
     {
-      LowerRoller.stop();
-      UpperRoller.stop();
-      MiddleRoller.stop();
-      IntakeRoller.stop();
+      Intake.stop();
+      Scoring.stop();
     }
 
     // Toggle del solenoide
@@ -426,7 +436,6 @@ int main()
   Competition.drivercontrol(usercontrol);
 
   pre_auton();
-  // vexcodeInit();
   vexcodeInit();
   default_constants();
 

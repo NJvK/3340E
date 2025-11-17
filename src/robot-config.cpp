@@ -9,6 +9,7 @@ brain  Brain;
 
 digital_out Frame(Brain.ThreeWirePort.B);
 digital_out Will(Brain.ThreeWirePort.C);
+digital_out Middle(Brain.ThreeWirePort.D);
 
 // motor LA = motor(PORT15, ratio6_1, false);
 // motor LB = motor(PORT14, ratio6_1, false);
