@@ -6,13 +6,13 @@ competition Competition;
 controller Controller1 = controller(primary);
 
 motor LA = motor(PORT11, ratio6_1, true);
-motor LB = motor(PORT2, ratio6_1, true);
-motor LC = motor(PORT5, ratio6_1, true);
+motor LB = motor(PORT2, ratio6_1, false);
+motor LC = motor(PORT5, ratio6_1, true); // stacked motors
 motor_group LM = motor_group(LA, LB, LC);
 
 motor RA = motor(PORT20, ratio6_1, false);
 motor RB = motor(PORT9, ratio6_1, false);
-motor RC = motor(PORT10, ratio6_1, false);
+motor RC = motor(PORT10, ratio6_1, true); // stacked motors
 motor_group RM = motor_group(RA, RB, RC);
 
 // motor_group Drivetrain = motor_group(LA, LB, LC, RA, RB, RC);
@@ -23,8 +23,8 @@ motor_group RM = motor_group(RA, RB, RC);
 // motor IntakeRoller = motor(PORT19, ratio18_1, false);
 
 // new china bot
-motor Intake = motor(PORT18, ratio6_1, false);
-motor Scoring = motor(PORT1, ratio6_1, true);
+motor Intake = motor(PORT19, ratio6_1, false);
+motor Scoring = motor(PORT3, ratio6_1, true);
 
 optical EYE = optical(PORT21);
 

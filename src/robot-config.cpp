@@ -7,9 +7,9 @@ using code = vision::code;
 // A global instance of brain used for printing to the V5 Brain screen.
 brain  Brain;
 
-digital_out Frame(Brain.ThreeWirePort.B);
-digital_out Will(Brain.ThreeWirePort.C);
-digital_out Middle(Brain.ThreeWirePort.D);
+digital_out Frame(Brain.ThreeWirePort.G); // descore mech
+digital_out Will(Brain.ThreeWirePort.F); // match loder
+digital_out Middle(Brain.ThreeWirePort.H); // middle goal pisten
 
 // motor LA = motor(PORT15, ratio6_1, false);
 // motor LB = motor(PORT14, ratio6_1, false);

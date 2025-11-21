@@ -137,7 +137,7 @@ void holonomic_odom_test(){
 
 
 void LEFT_RED_AUTON(){
-
+  
 }
 
 void RIGHT_RED_AUTON(){
